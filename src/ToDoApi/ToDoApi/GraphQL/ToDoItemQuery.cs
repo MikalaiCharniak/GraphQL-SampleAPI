@@ -13,7 +13,7 @@ namespace ToDoApi.GraphQL
                 arguments: new QueryArguments(
                     new QueryArgument<IdGraphType>()
                     {
-                        Name = "Id",
+                        Name = "id",
                         Description = "Unique Id of concrete task"
                     }),
                 resolve: context =>

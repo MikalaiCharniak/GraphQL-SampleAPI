@@ -18,31 +18,6 @@ namespace ToDoApi
         public static void Main(string[] args)
         {
             IWebHost host = CreateWebHostBuilder(args).Build();
-            using (IServiceScope scope = host.Services.CreateScope())
-            {
-                AppDbContext context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-
-                context.ToDoItems.AddRange(
-                    new ToDoItem()
-                    {
-                        ToDoItemId = 1,
-                        Description = "Make GraphQL Demo",
-                        Status = true
-                    },
-                    new ToDoItem()
-                    {
-                        ToDoItemId = 2,
-                        Description = "Make GraphQL Presentation",
-                        Status = true
-                    },
-                    new ToDoItem()
-                    {
-                        ToDoItemId = 3,
-                        Description = "Make F# Demo",
-                        Status = false
-                    }
-                    );
-            }
             host.Run();
         }
 

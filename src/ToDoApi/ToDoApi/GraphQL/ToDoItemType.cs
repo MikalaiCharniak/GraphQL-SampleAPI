@@ -9,7 +9,7 @@ namespace ToDoApi.GraphQL
         public ToDoItemType()
         {
             Name = "ToDoItemType";
-            Field(x => x.ToDoItemId, type: typeof(IdGraphType)).Description("The ID ToDo Item.");
+            Field(x => x.ToDoItemId, type: typeof(IntGraphType)).Description("The ID ToDo Item.");
             Field(x => x.Description).Description("Describe todo task");
             Field(x => x.Status).Description("Bool type of successfully or not status of this task");
         }

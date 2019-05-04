@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using GraphiQl;
 using ToDoApi.Database;
+using ToDoApi.Models;
 
 namespace ToDoApi
 {
@@ -20,7 +21,7 @@ namespace ToDoApi
         {
             services.AddDbContext<AppDbContext>(context =>
             {
-                context.UseInMemoryDatabase("ToDoDB");
+                context.UseInMemoryDatabase("ToDoApi");
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

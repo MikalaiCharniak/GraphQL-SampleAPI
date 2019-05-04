@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ToDoApi.Database;
 using ToDoApi.GraphQL;
+using ToDoApi.Models;
 
 namespace ToDoApi.Controllers
 {
@@ -21,6 +22,7 @@ namespace ToDoApi.Controllers
 
         public async Task<IActionResult> Post([FromBody] GraphQLQuery query)
         {
+            AddTestData(_db);
             var inputs = query.Variables.ToInputs();
 
             var schema = new Schema
@@ -42,6 +44,30 @@ namespace ToDoApi.Controllers
             }
 
             return Ok(result);
+        }
+
+
+        private void AddTestData(AppDbContext context)
+        {
+            context.ToDoItems.AddRange(
+               new ToDoItem()
+               {
+                   Description = "Make GraphQL Demo",
+                   Status = true
+               },
+               new ToDoItem()
+               {
+                   Description = "Make GraphQL Presentation",
+                   Status = true
+               },
+               new ToDoItem()
+               {
+ 
+                   Description = "Make F# Demo",
+                   Status = false
+               }
+               );
+            context.SaveChanges();
         }
     }
 }
