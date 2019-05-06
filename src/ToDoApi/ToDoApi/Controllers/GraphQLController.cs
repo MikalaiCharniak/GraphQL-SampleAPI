@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ToDoApi.Database;
 using ToDoApi.GraphQL;
+using ToDoApi.GraphQL.Core.GraphQueris;
 using ToDoApi.Models;
 
 namespace ToDoApi.Controllers
@@ -62,7 +63,6 @@ namespace ToDoApi.Controllers
                },
                new ToDoItem()
                {
- 
                    Description = "Make F# Demo",
                    Status = false
                }

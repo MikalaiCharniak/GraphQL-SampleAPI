@@ -11,15 +11,15 @@ namespace ToDoApi.GraphQL
             Field<ToDoItemType>(
                 "ToDoItem",
                 arguments: new QueryArguments(
-                    new QueryArgument<IdGraphType>()
+                    new QueryArgument<BooleanGraphType>()
                     {
-                        Name = "id",
-                        Description = "Unique Id of concrete task"
+                        Name = "status",
+                        Description = "status"
                     }),
                 resolve: context =>
                 {
-                    var id = context.GetArgument<int>("id");
-                    var task = db.ToDoItems.FirstOrDefault(x => x.ToDoItemId == id);
+                    var status = context.GetArgument<bool>("status");
+                    var task = db.ToDoItems.FirstOrDefault(x => x.Status == status);
                     return task;
                 });
         }
