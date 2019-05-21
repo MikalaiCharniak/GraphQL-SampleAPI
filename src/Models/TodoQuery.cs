@@ -1,5 +1,4 @@
 using GraphQL.Types;
-using GraphQL;
 using TodoAPI.Data;
 using System.Collections.Generic;
 
