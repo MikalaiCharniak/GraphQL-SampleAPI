@@ -1,8 +1,8 @@
-﻿namespace ToDoApi.Models
+namespace TodoAPI.Models
 {
-    public class ToDoItem
+    public class Todo
     {
-        public int ToDoItemId { get; set; }
+        public int Id { get; set; }
         public string Description { get; set; }
         public bool Status { get; set; }
     }
