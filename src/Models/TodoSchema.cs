@@ -9,6 +9,7 @@ namespace TodoAPI.Models
             : base(resolveType)
         {
             Query = (TodoQuery)resolveType(typeof(TodoQuery));
+            Mutation = (TodoMutation)resolveType(typeof(TodoMutation));
         }
     }
 }

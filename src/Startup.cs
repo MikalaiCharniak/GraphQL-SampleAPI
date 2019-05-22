@@ -26,11 +26,15 @@ namespace TodoAPI
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddScoped<TodoQuery>();
-            services.AddTransient<ITodoRepository, TodoRepository>();
+            services.AddScoped<TodoMutation>();
+            services.AddSingleton<ITodoRepository, TodoRepository>();
             services.AddScoped<IDocumentExecuter, DocumentExecuter>();
             services.AddTransient<TodoType>();
+            services.AddTransient<TodoInput>();
             var sp = services.BuildServiceProvider();
-            services.AddScoped<ISchema>(_ => new TodoSchema(type => (GraphType)sp.GetService(type)) { Query = sp.GetService<TodoQuery>() });
+            services.AddScoped<ISchema>(_ => new TodoSchema(type => (GraphType)sp.GetService(type)) {
+                Query = sp.GetService<TodoQuery>(),
+            Mutation = sp.GetService<TodoMutation>()});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

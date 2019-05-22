@@ -8,5 +8,6 @@ namespace TodoAPI.Data
         Task<Todo> GetTodoById(int id);
         Task<List<Todo>> GetTodos();
         Task<List<Todo>> GetTodoByStatus(bool status);
+        Task<Todo> AddTodo(Todo todo);
     }
 }
