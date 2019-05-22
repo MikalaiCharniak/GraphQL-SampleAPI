@@ -9,5 +9,6 @@ namespace TodoAPI.Data
         Task<List<Todo>> GetTodos();
         Task<List<Todo>> GetTodoByStatus(bool status);
         Task<Todo> AddTodo(Todo todo);
+        Task<Todo> DeleteTodo(int id);
     }
 }

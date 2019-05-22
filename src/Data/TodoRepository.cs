@@ -37,5 +37,12 @@ namespace TodoAPI.Data
             _todos.Add(todo);
             return Task.FromResult(todo);
         }
+
+        public Task<Todo> DeleteTodo(int id)
+        {
+            var todo = _todos.FirstOrDefault(x => x.Id == id);
+            _todos.RemoveAll(x => x.Id == id);
+            return Task.FromResult(todo);
+        }
     }
 }

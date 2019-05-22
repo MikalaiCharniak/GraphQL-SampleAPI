@@ -19,6 +19,15 @@ namespace TodoAPI.Models
                 var todo = context.GetArgument<Todo>("todoItem");
                 return todoRepository.AddTodo(todo);
             });
+            Field<TodoType>(
+                      "deleteToDo",
+                      arguments: new QueryArguments(
+                          new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id" }),
+                      resolve: context =>
+                      {
+                          var id = context.GetArgument<int>("id");
+                          return todoRepository.DeleteTodo(id);
+                      });
         }
     }
 }
